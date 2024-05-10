@@ -13,6 +13,7 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
 
 def get_current_user(provided_token: str = Depends(oauth2_scheme)):
     decoded_token = auth.verify_id_token(provided_token)
+    decoded_token["idToken"] = provided_token
     return decoded_token
 
 @router.post("/signup", status_code=201)
