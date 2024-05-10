@@ -5,36 +5,33 @@ from classes.models import User
 from database.firebase import firebase_auth
 
 router = APIRouter(
-    prefix='/auth',
-    tags=['Auth']
+    prefix="/auth",
+    tags=["Auth"]
 )
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl='auth/login')
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
+
 def get_current_user(provided_token: str = Depends(oauth2_scheme)):
     decoded_token = auth.verify_id_token(provided_token)
-    decoded_token['idToken'] = provided_token
     return decoded_token
 
-@router.post('/signup', status_code=201)
-async def create_account(user: User) :
+@router.post("/signup", status_code=201)
+async def create_account(user: User):
     try:
-        newUser = auth.create_user(**user.model_dump())
-        return {'message': 'User created with id: '+newUser.uid}
+        new_user = auth.create_user(**user.model_dump())
+        return {"message": f"User created with id: {new_user.uid}"}
     except auth.EmailAlreadyExistsError:
-        raise HTTPException(status_code=409, detail='User already exists for '+user.email)
-    
-@router.post('/login')
+        raise HTTPException(status_code=409, detail=f"User already exists for {user.email}")
+
+@router.post("/login")
 async def create_swagger_token(user_credentials: OAuth2PasswordRequestForm = Depends()):
-    try :
+    try:
         user = firebase_auth.sign_in_with_email_and_password(email=user_credentials.username, password=user_credentials.password)
-        token = user['idToken']
-        return {
-            'access_token': token,
-            'token_type': 'bearer'
-        }
-    except :
-        raise HTTPException(status_code=401, detail='Invalid credentials')
-    
-@router.get('/me')
+        token = user["idToken"]
+        return {"access_token": token, "token_type": "bearer"}
+    except:
+        raise HTTPException(status_code=401, detail="Invalid credentials")
+
+@router.get("/me")
 def secure_endpoint(user_data: dict = Depends(get_current_user)):
     return user_data
