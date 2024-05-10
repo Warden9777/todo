@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from database.firebase import firebase_auth
+
 
 # Documentation
 from documentation.description import api_description
@@ -10,7 +12,7 @@ import routers.router_auth
 import routers.router_todos
 
 api = FastAPI(
-  title="todo-list-api",
+  title="todo-api-estiam",
   description=api_description,
   openapi_tags=tags_metadata,
   docs_url='/'
