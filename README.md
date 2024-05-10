@@ -1,7 +1,5 @@
-# todo
+# todo-estiam-api
 Estiam api todo
-
-# todo-api-estiam
 
 ## Description
 Ce projet est un serveur API basé sur FastAPI, conçu pour gérer les tâches (todos) et l'authentification des utilisateurs. Il utilise Firebase pour la gestion de l'authentification des utilisateurs et de la base de données.
