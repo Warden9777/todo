@@ -15,7 +15,6 @@ Ce projet est un serveur API basé sur FastAPI, conçu pour gérer les tâches (
 
 2. Installez les dépendances Python en exécutant la commande suivante dans votre terminal :
 
-
 3. Si vous utilisez des dépendances npm, installez-les en exécutant la commande suivante :
 
 
@@ -39,17 +38,6 @@ La documentation de l'API est disponible à l'URL racine du serveur.
 - `/auth` : Routes pour l'authentification des utilisateurs.
 - `/todos` : Routes pour la gestion des tâches (todos).
 
-## Contribuer
-Les contributions sont les bienvenues ! Si vous souhaitez contribuer à ce projet, veuillez suivre les étapes suivantes :
-1. Fork du dépôt
-2. Créez une nouvelle branche (`git checkout -b feature/feature-name`)
-3. Faites vos modifications et ajoutez-les (`git add .`)
-4. Committez vos modifications (`git commit -m "Add feature"`)
-5. Push vers la branche (`git push origin feature/feature-name`)
-6. Créez une demande d'extraction
 
 ## Auteurs
-[Liste des auteurs/contributeurs]
-
-## Licence
-Ce projet est sous licence [MIT Licence](LICENSE).
+Nolan nabeth 
